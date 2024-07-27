@@ -25,7 +25,7 @@ jobs:
     - name: process .h file
       working-directory: ${{github.workspace}}
       run:  |
-        sudo cp include/* /usr/include/
+        sudo cp -r include/* /usr/include/
         find . -name "libjsoncpp.so"
         sudo cp ./cmake-build-debug-ubuntu24/src/lib_json/libjsoncpp.so  /usr/lib/
 
