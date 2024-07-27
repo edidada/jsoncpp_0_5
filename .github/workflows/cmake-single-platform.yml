@@ -40,6 +40,6 @@ jobs:
       working-directory: ${{github.workspace}}
       run:  |
         find . -name "libjsoncpp.so"
-        sudo cp ./cmake-build-debug-ubuntu24/src/lib_json/libjsoncpp.so  /usr/lib/
+        sudo cp ./build/src/lib_json/libjsoncpp.so  /usr/lib/
         sudo ldconfig
 
