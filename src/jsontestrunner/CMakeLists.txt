@@ -1,0 +1,1 @@
+add_executable(jsoncpp_0_5_jsontestrunner_main main.cpp)
