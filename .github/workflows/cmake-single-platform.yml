@@ -22,6 +22,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: process .h file
+      working-directory: ${{github.workspace}}
+      run:  |
+        sudo cp include/* /usr/include/
+        find . -name "libjsoncpp.so"
+        sudo cp ./cmake-build-debug-ubuntu24/src/lib_json/libjsoncpp.so  /usr/lib/
+
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
@@ -36,4 +43,11 @@ jobs:
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
+
+    - name: process libjsoncpp.so file
+      working-directory: ${{github.workspace}}
+      run:  |
+        find . -name "libjsoncpp.so"
+        sudo cp ./cmake-build-debug-ubuntu24/src/lib_json/libjsoncpp.so  /usr/lib/
+        sudo ldconfig
 
